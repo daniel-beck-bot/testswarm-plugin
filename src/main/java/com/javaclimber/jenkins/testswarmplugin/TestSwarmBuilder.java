@@ -312,7 +312,7 @@ public class TestSwarmBuilder extends Builder {
 
 		try {
 
-			String data = "authUsername="
+			String data = "authID="
 					+ URLEncoder.encode(projectId, "UTF-8") + "&authToken="
 					+ URLEncoder.encode(authToken, "UTF-8") + "&jobName="
 					+ jobName + "&runMax=" + maxRuns + "&browserSets[]="
