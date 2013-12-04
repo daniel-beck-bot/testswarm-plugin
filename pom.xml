@@ -5,7 +5,7 @@
     <artifactId>plugin</artifactId>
     <version>1.424</version><!-- which version of Jenkins is this plugin built against? -->
   </parent>
-
+  <url>https://wiki.jenkins-ci.org/display/JENKINS/testswarm-plugin</url>
   <groupId>com.javaclimber.jenkins.testswarmplugin</groupId>
   <artifactId>jenkins-testswarm-plugin</artifactId>
   <version>1.3-SNAPSHOT</version>
