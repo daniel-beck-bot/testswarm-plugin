@@ -8,12 +8,12 @@
 		<f:textbox field="jobName" default="Hudson - Integration Tests" clazz="required" checkMessage="${%mandatory.jobName}" value="${instance.jobName}"/>
   	</f:entry>
   	
-  	<f:entry title="Your Username">
-		<f:textbox field="userName" default="tester" clazz="required" checkMessage="${%mandatory.userName}" value="${instance.userName}"/>
+  	<f:entry title="Your Project Id" field="projectId">
+		<f:textbox default="tester" clazz="required" checkMessage="${%mandatory.projectId}" value="${instance.projectId}"/>
   	</f:entry>
   	
-  	<f:entry title="Your Auth Token">
-		<f:textbox field="authToken" default="8d71d036c19c59392926696e9da5813a00295de0" clazz="required" checkMessage="${%mandatory.authToken}" value="${instance.authToken}"/>
+  	<f:entry title="Your Auth Token" field="authToken">
+		<f:textbox default="8d71d036c19c59392926696e9da5813a00295de0" clazz="required" checkMessage="${%mandatory.authToken}" value="${instance.authToken}"/>
   	</f:entry>   
   	
   	<f:entry title="Number of Runs">
@@ -21,11 +21,8 @@
   	</f:entry>
   	
 	<f:entry name="chooseBrowsers" title="Choose Browsers" field="chooseBrowsers" >
-    	<select name="chooseBrowsers">
-            <option value="default">Default Browsers</option>	    	
-        	<option value="currentDesktop">Current Desktop</option>
-        </select>
-    </f:entry>   
+            <f:textbox field="chooseBrowsers" default="3" clazz="required" value="${instance.chooseBrowsers}" checkMessage="${%mandatory.chooseBrowsers}" />
+        </f:entry>   
 
   	<f:entry title="Polling Interval (in secs)">
 		<f:textbox field="pollingIntervalInSecs" default="10" clazz="required" checkMessage="${%mandatory.pollingIntervalInSecs}" value="${instance.pollingIntervalInSecs}"/>

@@ -73,7 +73,7 @@ public class TestSwarmBuilder extends Builder {
 	private String jobNameCopy;
 
 	// user name
-	private String userName;
+	private String projectId;
 
 	// password
 	private String authToken;
@@ -120,14 +120,14 @@ public class TestSwarmBuilder extends Builder {
 	// "DataBoundConstructor"
 	@DataBoundConstructor
 	public TestSwarmBuilder(String testswarmServerUrl, String jobName,
-			String userName, String authToken, String maxRuns,
+			String projectId, String authToken, String maxRuns,
 			String chooseBrowsers, String pollingIntervalInSecs,
 			String timeOutPeriodInMins, String minimumPassing,
 			List<TestSuiteData> testSuiteList) {
 
 		this.testswarmServerUrl = testswarmServerUrl;
 		this.jobName = jobName;
-		this.userName = userName;
+		this.projectId = projectId;
 		this.authToken = authToken;
 		this.maxRuns = maxRuns;
 		this.chooseBrowsers = chooseBrowsers;
@@ -161,8 +161,8 @@ public class TestSwarmBuilder extends Builder {
 		return jobName;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getProjectId() {
+		return projectId;
 	}
 
 	public String getAuthToken() {
@@ -245,8 +245,8 @@ public class TestSwarmBuilder extends Builder {
 			return false;
 		}
 
-		if (this.getUserName() == null || this.getUserName().length() == 0) {
-			listener.error("Username is mandatory");
+		if (this.getProjectId() == null || this.getProjectId().length() == 0) {
+			listener.error("ProjectId is mandatory");
 			build.setResult(Result.FAILURE);
 			return false;
 		}
@@ -312,8 +312,8 @@ public class TestSwarmBuilder extends Builder {
 
 		try {
 
-			String data = "authUsername="
-					+ URLEncoder.encode(userName, "UTF-8") + "&authToken="
+			String data = "authID="
+					+ URLEncoder.encode(projectId, "UTF-8") + "&authToken="
 					+ URLEncoder.encode(authToken, "UTF-8") + "&jobName="
 					+ jobName + "&runMax=" + maxRuns + "&browserSets[]="
 					+ chooseBrowsers + buildTestSuitesQueryString();
@@ -602,7 +602,7 @@ public class TestSwarmBuilder extends Builder {
 		requestStr.append("client_id=").append(CLIENT_ID).append("&state=")
 				.append(STATE).append("&job_name=")
 				.append(URLEncoder.encode(this.jobNameCopy, CHAR_ENCODING))
-				.append("&user=").append(getUserName()).append("&auth=")
+				.append("&user=").append(getProjectId()).append("&auth=")
 				.append(getAuthToken()).append("&max=").append(getMaxRuns())
 				.append("&browsers=").append(getChooseBrowsers());
 	}
