@@ -705,31 +705,7 @@ public class TestSwarmBuilder extends Builder {
 	// extension point.
 	public static final class DescriptorImpl extends
 			BuildStepDescriptor<Builder> {
-		/**
-		 * To persist global configuration information, simply store it in a
-		 * field and call save().
-		 * 
-		 * <p>
-		 * If you don't want fields to be persisted, use <tt>transient</tt>.
-		 */
-		private boolean useFrench;
-
-		/**
-		 * Performs on-the-fly validation of the form field 'name'.
-		 * 
-		 * @param value
-		 *            This parameter receives the value that the user has typed.
-		 * @return Indicates the outcome of the validation. This is sent to the
-		 *         browser.
-		 */
-		public FormValidation doCheckName(@QueryParameter String value)
-				throws IOException, ServletException {
-			if (value.length() == 0)
-				return FormValidation.error("Please set a name");
-			if (value.length() < 4)
-				return FormValidation.warning("Isn't the name too short?");
-			return FormValidation.ok();
-		}
+	
 
 		public boolean isApplicable(Class<? extends AbstractProject> aClass) {
 			// indicates that this builder can be used with all kinds of project
@@ -747,14 +723,7 @@ public class TestSwarmBuilder extends Builder {
 		@Override
 		public boolean configure(StaplerRequest req, JSONObject formData)
 				throws FormException {
-			// To persist global configuration information,
-			// set that to properties and call save().
-			useFrench = formData.getBoolean("useFrench");
-
-			// ^Can also use req.bindJSON(this, formData);
-			// (easier when there are many fields; need set* methods for this,
-			// like setUseFrench)
-			save();
+		
 			return super.configure(req, formData);
 		}
 
@@ -769,13 +738,6 @@ public class TestSwarmBuilder extends Builder {
 			load();
 		}
 
-		/**
-		 * This method returns true if the global configuration says we should
-		 * speak French.
-		 */
-		public boolean useFrench() {
-			return useFrench;
-		}
 
 	}
 
